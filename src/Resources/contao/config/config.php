@@ -21,3 +21,7 @@ $GLOBALS['TL_CTP']['system']['comments'] = 'Agoat\CommentsPattern\PatternComment
 $GLOBALS['TL_CTP_NA']['multipattern'][] = 'comments';
 
 
+/**
+ * HOOK
+ */
+$GLOBALS['TL_HOOKS']['listComments'][] = array('Agoat\\CommentsPattern\\Comments', 'listPatternComments'); 
