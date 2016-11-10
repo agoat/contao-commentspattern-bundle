@@ -12,7 +12,7 @@
 /**
  * Palettes
  */
-$GLOBALS['TL_DCA']['tl_content_pattern']['palettes']['comments'] = '{type_legend},type;{comments_legend},comOrder,comPerPage,comModerate,comBbcode,comRequireLogin,comDisableCaptcha;{pattern_legend},alias;{invisible_legend},invisible';
+$GLOBALS['TL_DCA']['tl_content_pattern']['palettes']['comments'] = '{type_legend},type;{comments_legend},comOrder,comPerPage,comModerate,comBbcode,comRequireLogin,comDisableCaptcha,comTemplate,comFormTemplate;{pattern_legend},alias;{invisible_legend},invisible';
 
 // Fields
 $GLOBALS['TL_DCA']['tl_content_pattern']['fields']['comOrder'] = array
@@ -78,7 +78,17 @@ $GLOBALS['TL_DCA']['tl_content_pattern']['fields']['comTemplate'] = array
 	'default'                 => 'com_default',
 	'exclude'                 => true,
 	'inputType'               => 'select',
-	//'options_callback'        => array('tl_content_pattern_comments', 'getCommentsTemplates'),
+	'options_callback'        => array('tl_content_pattern_comments', 'getCommentsTemplates'),
+	'eval'                    => array('tl_class'=>'w50'),
+	'sql'                     => "varchar(32) NOT NULL default ''"
+);
+$GLOBALS['TL_DCA']['tl_content_pattern']['fields']['comFormTemplate'] = array
+(
+	'label'                   => &$GLOBALS['TL_LANG']['tl_content_pattern']['comFormTemplate'],
+	'default'                 => 'com_default',
+	'exclude'                 => true,
+	'inputType'               => 'select',
+	'options_callback'        => array('tl_content_pattern_comments', 'getCommentFormTemplates'),
 	'eval'                    => array('tl_class'=>'w50'),
 	'sql'                     => "varchar(32) NOT NULL default ''"
 );
@@ -101,6 +111,17 @@ class tl_content_pattern_comments extends Backend
 	public function getCommentsTemplates()
 	{
 		return $this->getTemplateGroup('com_');
+	}
+
+
+	/**
+	 * Return all comments templates as array
+	 *
+	 * @return array
+	 */
+	public function getCommentFormTemplates()
+	{
+		return $this->getTemplateGroup('mod_comment');
 	}
 
 }
