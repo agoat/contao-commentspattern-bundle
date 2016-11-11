@@ -58,7 +58,7 @@ class PatternComments extends Pattern
 		$this->Comments->addCommentsToTemplate($objCommentsTemplate, $objConfig, $this->Template->ptable, $this->Template->pid, $GLOBALS['TL_ADMIN_EMAIL']);
 		
 		// render the comment form
-		$objCommentFormTemplate = new \FrontendTemplate('mod_comment_form');
+		$objCommentFormTemplate = new \FrontendTemplate($this->comFormTemplate);
 		$objCommentFormTemplate->setData($objCommentsTemplate->getData());
 		
 		
