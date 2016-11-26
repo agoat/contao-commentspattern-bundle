@@ -121,7 +121,7 @@ class tl_content_pattern_comments extends Backend
 	 */
 	public function getCommentFormTemplates()
 	{
-		return $this->getTemplateGroup('mod_comment');
+		return $this->getTemplateGroup('mod_comment_');
 	}
 
 }
