@@ -11,11 +11,10 @@
 
 namespace Agoat\CommentsPattern;
 
-use Contao\Comments;
 use Contao\Database;
 
 
-class Comments extends Comments
+class Comments extends \Contao\Comments
 {
 	// listComments Hook
 	public function listPatternComments($arrRow) 
